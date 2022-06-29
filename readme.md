@@ -1,4 +1,10 @@
 # Overview
+## Note 
+I would like to admit, that abstraction segregation
+has taken * a bit * more that I've expected.
+It affects some other tarts of provided solution.
+Like there is no `@ExceptionHander`'s, Http response
+codes, that not follow specification and even unimplemented method.
 
 ## Game abstractions
 Game package overview is provided in corresponding
