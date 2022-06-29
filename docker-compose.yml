@@ -1,0 +1,28 @@
+version: '3'
+
+services:
+  app:
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    build:
+      dockerfile: Dockerfile
+      args:
+        - JAR_FILE=libs/CardGames-0.0.1-SNAPSHOT.jar
+      context: .
+    container_name: CardGames
+    depends_on:
+      - db
+    environment:
+      - JDBC_DATABASE_URL=jdbc:postgresql://db:5432/user
+      - JDBC_DATABASE_USERNAME=user
+      - JDBC_DATABASE_PASSWORD=password
+    ports:
+      - "8080:8080"
+
+
+  db:
+    image: 'postgres:13'
+    container_name: db
+    environment:
+      - POSTGRES_USER=user
+      - POSTGRES_PASSWORD=password
