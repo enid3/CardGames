@@ -20,7 +20,7 @@ public class LogServicesAspect {
     public void anyPublicMethod() {
     }
 
-    @Pointcut("!execution(public * com.github.enid3.cardgames.webapp.service.impl.BrockerImpl.*(..))")
+    @Pointcut("!execution(public * com.github.enid3.cardgames.webapp.service.impl.BrockerServiceImpl.*(..))")
     public void notBrocker() {
     }
 

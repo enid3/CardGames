@@ -7,12 +7,11 @@ import lombok.Getter;
 import java.util.Objects;
 
 @Getter
-public class LongLongIdentifiable extends Identifiable {
-    private final long id;
-    private final long modifier;
+public class LongLongIdentifiable extends LongIdentifiable {
+    protected final long modifier;
 
     protected LongLongIdentifiable(long id, long modifier) {
-        this.id = id;
+        super(id);
         this.modifier = modifier;
     }
 
@@ -28,7 +27,7 @@ public class LongLongIdentifiable extends Identifiable {
     public int hashCode() {
         return Objects.hash(id, modifier);
     }
-    public static Identifiable of(long id, long modifier) {
+    public static LongLongIdentifiable of(long id, long modifier) {
         return new LongLongIdentifiable(id, modifier);
     }
 }

@@ -19,14 +19,18 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 @Table(name = "users")
 public class User extends Identifiable {
-    public User(Long id, String name, Long tokens) {
-        super(id);
-        this.name = name;
-        this.tokens = tokens;
-    }
     @NotNull
     private String name;
     @NotNull
     @Min(0L)
     private Long tokens;
+
+    private Long reservedTokes;
+
+    public User(Long id, String name, Long tokens, Long reservedTokes) {
+        super(id);
+        this.name = name;
+        this.tokens = tokens;
+        this.reservedTokes = reservedTokes;
+    }
 }

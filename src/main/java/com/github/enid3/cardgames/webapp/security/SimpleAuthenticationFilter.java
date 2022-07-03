@@ -32,7 +32,7 @@ public class SimpleAuthenticationFilter extends GenericFilterBean {
         String name = ((HttpServletRequest) request).getHeader(HttpHeaders.AUTHORIZATION);
         if(name != null) {
             Optional<User> userOptional = userRepository.findByName(name);
-            User user = userOptional.orElseGet(() -> userRepository.save(new User(name, 1000l)));
+            User user = userOptional.orElseGet(() -> userRepository.save(new User(name, 1000l, 0l)));
 
             Authentication auth = new AbstractAuthenticationToken(AuthorityUtils.NO_AUTHORITIES) {
                 @Override

@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Getter
 public class LongIdentifiable extends Identifiable {
-    private final long id;
+    protected final long id;
 
     protected LongIdentifiable(long id) {
         this.id = id;
