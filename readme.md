@@ -46,6 +46,26 @@ strategies, even most of them are common(PLAY, FOLD, ...).
 Seems like thinking in this way will lead to `Entity-Component-System` 
 pattern.
 
+## No abstractions for user-specific & common; private & public game states
+`GameState` interface represents immutable state of specific game.
+Actual `GameState` can be received from role interface method `StateProvider.getState()`.
+`GameEngineHandler` implements this interface too, providing
+synchronization.
+
+So, in case player must know, for instance, his hand, 
+size of deck, [flop[turn[river]]], ... 
+I'm using single `GameState` instance to handle it all at the
+same time.
+It causes security issues(there's full deck in response).
+In terms of asynchronous communication(WebSocket):
+ineffective network usage (effective one is by providing differences only),
+state parsing logic required on the service layer, in order to provide
+user-specific state.
+
+By the way, it's poor from the point of code reuse, since we
+have to duplicate `*GameEngine` variables in `*GameState`.
+
+
 ## Other
 There are some `\\ TODO ...` around project, which 
 represent limitations, bugs, poor abstractions and so on.
